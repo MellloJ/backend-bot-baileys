@@ -1,14 +1,15 @@
 services:
   - type: web
     name: baileys-laravel
-    env: php
+    runtime: php             # MUDANÇA 1: Use 'runtime' ao invés de 'env'
+    plan: free               # MUDANÇA 2: Força o plano gratuito
     buildCommand: "./render-build.sh"
     startCommand: "php artisan serve --host=0.0.0.0 --port=$PORT"
     envVars:
       - key: APP_KEY
-        sync: false
+        generateValue: true  # Gera uma chave segura automaticamente
       - key: APP_DEBUG
-        value: true
+        value: false
       - key: APP_ENV
         value: production
       - key: LOG_CHANNEL
