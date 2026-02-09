@@ -1,16 +1,14 @@
 services:
   - type: web
     name: baileys-laravel
-    env: php                 # A chave CORRETA é 'env'
-    plan: free
-    region: oregon           # Força uma região para evitar dúvidas
+    env: php
     buildCommand: "./render-build.sh"
     startCommand: "php artisan serve --host=0.0.0.0 --port=$PORT"
     envVars:
       - key: APP_KEY
         generateValue: true
       - key: APP_DEBUG
-        value: "false"       # Coloque entre aspas para garantir que seja texto
+        value: "false"
       - key: APP_ENV
         value: production
       - key: LOG_CHANNEL
