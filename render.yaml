@@ -1,9 +1,9 @@
 services:
   - type: web
     name: baileys-laravel
-    env: php
-    buildCommand: "./render-build.sh"
-    startCommand: "php artisan serve --host=0.0.0.0 --port=$PORT"
+    env: docker              # MUDANÇA: Agora é docker!
+    plan: free
+    region: oregon
     envVars:
       - key: APP_KEY
         generateValue: true
@@ -13,3 +13,5 @@ services:
         value: production
       - key: LOG_CHANNEL
         value: stderr
+      - key: PORT
+        value: 8080          # O Docker precisa de uma porta padrão
